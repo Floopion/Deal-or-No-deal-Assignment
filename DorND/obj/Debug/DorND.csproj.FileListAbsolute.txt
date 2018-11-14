@@ -1,0 +1,35 @@
+C:\Users\Floopion\Desktop\DorND\DorND\bin\Debug\DorND.exe.config
+C:\Users\Floopion\Desktop\DorND\DorND\bin\Debug\DorND.exe
+C:\Users\Floopion\Desktop\DorND\DorND\bin\Debug\DorND.pdb
+C:\Users\Floopion\Desktop\DorND\DorND\obj\Debug\DorND.csprojAssemblyReference.cache
+C:\Users\Floopion\Desktop\DorND\DorND\obj\Debug\DorND.csproj.CoreCompileInputs.cache
+C:\Users\Floopion\Desktop\DorND\DorND\obj\Debug\DorND.exe
+C:\Users\Floopion\Desktop\DorND\DorND\obj\Debug\DorND.pdb
+F:\DorND\DorND\bin\Debug\DorND.exe.config
+F:\DorND\DorND\bin\Debug\DorND.exe
+F:\DorND\DorND\bin\Debug\DorND.pdb
+F:\DorND\DorND\obj\Debug\DorND.csprojAssemblyReference.cache
+F:\DorND\DorND\obj\Debug\DorND.csproj.CoreCompileInputs.cache
+F:\DorND\DorND\obj\Debug\DorND.exe
+F:\DorND\DorND\obj\Debug\DorND.pdb
+F:\DorND - Copy\DorND\bin\Debug\DorND.exe.config
+F:\DorND - Copy\DorND\bin\Debug\DorND.exe
+F:\DorND - Copy\DorND\bin\Debug\DorND.pdb
+F:\DorND - Copy\DorND\obj\Debug\DorND.csprojAssemblyReference.cache
+F:\DorND - Copy\DorND\obj\Debug\DorND.csproj.CoreCompileInputs.cache
+F:\DorND - Copy\DorND\obj\Debug\DorND.exe
+F:\DorND - Copy\DorND\obj\Debug\DorND.pdb
+E:\DorND - Copy\DorND\bin\Debug\DorND.exe.config
+E:\DorND - Copy\DorND\bin\Debug\DorND.exe
+E:\DorND - Copy\DorND\bin\Debug\DorND.pdb
+E:\DorND - Copy\DorND\obj\Debug\DorND.csprojAssemblyReference.cache
+E:\DorND - Copy\DorND\obj\Debug\DorND.csproj.CoreCompileInputs.cache
+E:\DorND - Copy\DorND\obj\Debug\DorND.exe
+E:\DorND - Copy\DorND\obj\Debug\DorND.pdb
+C:\Users\Floopion\Desktop\DorND New\DorND\bin\Debug\DorND.exe.config
+C:\Users\Floopion\Desktop\DorND New\DorND\bin\Debug\DorND.exe
+C:\Users\Floopion\Desktop\DorND New\DorND\bin\Debug\DorND.pdb
+C:\Users\Floopion\Desktop\DorND New\DorND\obj\Debug\DorND.csprojAssemblyReference.cache
+C:\Users\Floopion\Desktop\DorND New\DorND\obj\Debug\DorND.csproj.CoreCompileInputs.cache
+C:\Users\Floopion\Desktop\DorND New\DorND\obj\Debug\DorND.exe
+C:\Users\Floopion\Desktop\DorND New\DorND\obj\Debug\DorND.pdb
