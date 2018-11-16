@@ -10,14 +10,14 @@ namespace DealorNoDeal
 {
     class Program
     {
-        public struct Detail                                                        //This struct holds the contestant details that the txt file will be read into
+        public struct Detail                                        //This struct holds the contestant details that the txt file will be read into.
         {
             public string last;
             public string first;
             public string hobby;
         }
 
-        public struct Object                                        //This is for my Game objects, array slot dictates the case, one boolean is to tell if the case has opened the othe is to tell if it has been chosen on the board 
+        public struct Object                                        //This is for my Game objects, array slot dictates the case, one boolean is to tell if the case has opened the othe is to tell if it has been chosen on the board. 
         {
             public bool caseOpened;
             public int number;
@@ -136,7 +136,7 @@ namespace DealorNoDeal
 
         public static void Show(ref Detail[] position)                                 //Method to show all the contestants. 
         {
-            Console.ForegroundColor = ConsoleColor.DarkMagenta;                            //Change Title Color to Yellow  
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;                        //Change Title Color to Yellow  
             Console.WriteLine("   _____________________________________________________________________________________________________ ");
             Console.WriteLine("  /                                                                                                    \\");
             Console.WriteLine("  |  ██████╗ ██████╗ ███╗   ██╗████████╗███████╗███████╗████████╗ █████╗ ███╗   ██╗████████╗███████╗    |");
@@ -149,7 +149,7 @@ namespace DealorNoDeal
             Console.WriteLine(" ");
             Console.ResetColor();
 
-            for (int i = 0; i < position.Length; i++)                           //For loop that itterates through the array using padding to lay it out attractivley. 
+            for (int i = 0; i < position.Length; i++)                                 //For loop that itterates through the array using padding to lay it out attractivley. 
             {
                 Console.WriteLine("\t{0}\t{1}\t{2}", position[i].last.PadRight(15), position[i].first.PadRight(15), position[i].hobby);
             }
@@ -158,7 +158,7 @@ namespace DealorNoDeal
             Console.ReadLine();
         }
 
-        public static void Search(ref Detail[] search)                          //Method for finding and updating a contestant 
+        public static void Search(ref Detail[] search)                                //Method for finding and updating a contestant 
         {
             Console.ForegroundColor = ConsoleColor.DarkGreen;                            //Change Title Color to Yellow  
             Console.WriteLine("\t   ___________________________________________________ ");
@@ -182,20 +182,20 @@ namespace DealorNoDeal
             do
             {
 
-                for (int i = 0; i < search.Length; i++)                               //
+                for (int i = 0; i < search.Length; i++)                               //Print list of contestants out again.
                 {
                     Console.WriteLine("\t{0}\t{1}\t{2}", search[i].last.PadRight(15), search[i].first.PadRight(15), search[i].hobby.PadRight(15));
                 }
-                Console.Write("\nWhich Contestant would you like to update? (Please enter their");
+                Console.Write("\nWhich Contestant would you like to update? (Please enter their");                 //Ask for last name adding colour.
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.Write(" Last Name ");
                 Console.ResetColor();
                 Console.Write("): ");
                 wanted = Console.ReadLine();
 
-                for (int i = 0; i < search.Length; i++)
+                for (int i = 0; i < search.Length; i++)                             //For loop for re writing back to the file, withes the first & last names and hobby on sepearate lines as not to mess up reading.  
                 {
-                    if (search[i].last == wanted)
+                    if (search[i].last == wanted)                                   // if statement to check if the name matches one in the list. 
                     {
                         sr.Close();
                         StreamWriter sw = new StreamWriter(@"DealOrNoDeal.txt");
@@ -217,24 +217,24 @@ namespace DealorNoDeal
                         Console.WriteLine("\n\nEntry has been changed!");
                         Thread.Sleep(700);
 
-                        for (int j = 0; j < search.Length; j++)
+                        for (int j = 0; j < search.Length; j++)                    //Writes back to the file.
                         {
                             sw.WriteLine(search[j].last);
                             sw.WriteLine(search[j].first);
                             sw.WriteLine(search[j].hobby);
                         }
 
-                        sw.Close();
+                        sw.Close();                                                //Close stream Writer and change boolean. 
                         found = true;
                     }
                 }
 
-                if (found == true)
+                if (found == true)                                                 //Allows you to get out of the while loop if you have found an entry. 
                 {
                     again = false;
                 }
 
-                if (found == false)
+                if (found == false)                                                //If an entry is not found then display an error message and ask if user wants to try again. 
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("\n   Error: Entry Not Found!");
@@ -246,7 +246,7 @@ namespace DealorNoDeal
                     tmp = Console.ReadLine();
                     tmp2 = Convert.ToChar(tmp.ToUpper().Substring(0, 1));
 
-                    if (tmp2 == 'N')
+                    if (tmp2 == 'N')                                               //If the user answers No change boolean to allow exit of while loop. 
                     {
                         again = false;
                     }
@@ -256,44 +256,44 @@ namespace DealorNoDeal
             } while (again == true);
         }
 
-        public static void Assign(ref Object[] shuffle)
+        public static void Assign(ref Object[] shuffle)                           //Method for shuffling the case values. Starts by initiating random variable and hard coding money and case values into the arrays.
         {
-            Random rand = new Random();
+            Random rand = new Random();                                          
             int tmp, num1, num2; ;
 
             int[] board = new[] { 1, 2, 5, 10, 25, 50, 75, 100, 150, 250, 500, 750, 1000, 1500, 2000, 3000, 5000, 7500, 10000, 25000, 50000, 75000, 100000, 200000, 250000, 400000 };
             int[] tempList = new[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 };
 
-            for (int i = 0; i < shuffle.Length; i++)
+            for (int i = 0; i < shuffle.Length; i++)                            //Reset the values in the struct so that every new game starts properly with no bugs. 
             {
                 shuffle[i].board = board[i];
                 shuffle[i].caseOpened = false;
                 shuffle[i].boredChosen = false;
             }
 
-            for (int i = 0; i < 50; i++)
+            for (int i = 0; i < 50; i++)                                        //for loop for shuffling choose a random number
             {
                 num1 = rand.Next(0, 26);
 
-                do
+                do                                                              //While loop to make sure second random number is not the same as the first. 
                 {
 
                     num2 = rand.Next(0, 26);
 
                 } while (num2 == num1);
 
-                tmp = tempList[num1];
+                tmp = tempList[num1];                                           //Switch the values at the index of the random numbers. 
                 tempList[num1] = tempList[num2];
                 tempList[num2] = tmp;
             }
 
-            for (int i = 0; i < shuffle.Length; i++)
+            for (int i = 0; i < shuffle.Length; i++)                            //assign the shuffled values to the struct values.
             {
                 shuffle[i].number = board[tempList[i]];
             }
         }
 
-        public static void Bubble(ref Detail second, ref Detail first)
+        public static void Bubble(ref Detail second, ref Detail first)         //Method for bubble sorting. recieve two values and swap them.  
         {
             Detail temp;
             temp = second;
@@ -301,18 +301,18 @@ namespace DealorNoDeal
             first = temp;
         }
 
-        public static void PlayGame()
+        public static void PlayGame()                                         //Main method for playing the game. 
         {
             int playerCase, casetmp, turn = 1, playerWins = 0;
             string tmp;
 
             bool takeMoney = false,lastTurn=false;
 
-            Object[] Assets = new Object[26];
+            Object[] Assets = new Object[26];                                //New Array of struct type 'Object.'
 
             Assign(ref Assets);
 
-            do
+            do                                                              //Do / While to assign the players case, checking that its within the allowed parameters.
             {
                 Console.WriteLine("Please Choose a case between 1 and 26:\n");
                 tmp = Console.ReadLine();
@@ -322,13 +322,13 @@ namespace DealorNoDeal
 
             } while (casetmp < 1 || casetmp > 26);
 
-            playerCase = Assets[casetmp - 1].number;
+            playerCase = Assets[casetmp - 1].number;                        //Change the players chosen case state to 'opened.' 
             Assets[casetmp - 1].caseOpened = true;
 
             Turn1(ref Assets,casetmp);
             takeMoney = BankOffer(Assets, turn, ref playerWins);
 
-            if (takeMoney == false)
+            if (takeMoney == false)                                       //Series of if statments varying in lenght to simulate 'turns.' Checks if the player has chosen 'deal' and if not runs the correct turn and the bank offer method.
             {
                 turn = 2;
                 Turn2(ref Assets, casetmp);
@@ -369,7 +369,7 @@ namespace DealorNoDeal
                 lastTurn = true;
             }
 
-            if (lastTurn == false)
+            if (lastTurn == false)                                                            //If its not the final turn, Show how much the player won and what was in their chosen case. 
             {
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.White;
@@ -379,7 +379,7 @@ namespace DealorNoDeal
             }
         }
 
-        public static bool BankOffer(Object[] Money, int turn, ref int winnings)
+        public static bool BankOffer(Object[] Money, int turn, ref int winnings)             //Method to simulate the 'Bank offer' depending on the board state. 
         {
             Console.Clear();
             bool Deal = false;
@@ -387,7 +387,7 @@ namespace DealorNoDeal
             string temp;
             char choice = ' ';
 
-            for (int i = 0; i < Money.Length; i++)
+            for (int i = 0; i < Money.Length; i++)                                          //Algorithm for bank offer, adds up the ammount of money left on the board and the average. 
             {
                 if (Money[i].boredChosen == false)
                 {
@@ -396,11 +396,11 @@ namespace DealorNoDeal
                 }
             }
 
-            offer = ((total / average) * turn) / 10;
+            offer = ((total / average) * turn) / 10;                                       //Offer is equal to the total divided by the average, times the ammount of turns, divided by 10.
 
             do
             {
-                Console.ForegroundColor = ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.White;                              //Display the bank offer and aske player if the want to take the ammount as their prize. 
                 Console.WriteLine("The bank offers you ");
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write("   {0:c0}", offer);
@@ -412,7 +412,7 @@ namespace DealorNoDeal
                 choice = Convert.ToChar(temp.Substring(0, 1).ToUpper());
                 Console.ResetColor();
 
-                if (choice != 'D' && choice != 'N')
+                if (choice != 'D' && choice != 'N')                                         //Check that the input is either D or ND and throw an error message if its not true. 
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("\n\tERROR!");
@@ -425,7 +425,7 @@ namespace DealorNoDeal
 
             } while (choice != 'D' && choice != 'N');
 
-            if (choice == 'D')
+            if (choice == 'D')                                                              //If the player takes prize change boolean and assign their "winnings" to a variable.
             {
                 Deal = true;
                 winnings = offer;
@@ -434,7 +434,7 @@ namespace DealorNoDeal
             return Deal;
         }
 
-        public static void Turn1(ref Object[] cases, int casetmp)
+        public static void Turn1(ref Object[] cases, int casetmp)                           //Series of if statments dictating how many cases are picked per turn. 
         {
 
             for (int i = 0; i < 6; i++)
@@ -490,7 +490,7 @@ namespace DealorNoDeal
 
         }
 
-        public static void FinalTurn(ref Object[] cases, ref int winnings,int playerCase)
+        public static void FinalTurn(ref Object[] cases, ref int winnings,int playerCase)                       
         {
             Console.Clear();
 
