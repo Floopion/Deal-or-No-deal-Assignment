@@ -434,7 +434,7 @@ namespace DealorNoDeal
             return Deal;
         }
 
-        public static void Turn1(ref Object[] cases, int casetmp)                           //Series of if statments dictating how many cases are picked per turn. 
+        public static void Turn1(ref Object[] cases, int casetmp)                           //Series of if statments dictating how many cases are picked per 'turn. 
         {
 
             for (int i = 0; i < 6; i++)
@@ -490,7 +490,7 @@ namespace DealorNoDeal
 
         }
 
-        public static void FinalTurn(ref Object[] cases, ref int winnings,int playerCase)                       
+        public static void FinalTurn(ref Object[] cases, ref int winnings,int playerCase)                       //Method for if the layer makes it too the last round.                     
         {
             Console.Clear();
 
@@ -498,7 +498,7 @@ namespace DealorNoDeal
             string temp;
             char choice = ' ';
 
-            for (int i = 0; i < cases.Length; i++)
+            for (int i = 0; i < cases.Length; i++)                                                              //find and assign the final case to a variable. 
             {
                 if (cases[i].caseOpened == false)
                 {
@@ -509,7 +509,7 @@ namespace DealorNoDeal
             do
             {
 
-                Console.WriteLine("Do you want to take your case or case {0}?", finalCase);
+                Console.WriteLine("Do you want to take your case or case {0}?", finalCase);                     //Ask player if they would like to stay with their case or take the one left on the board. 
                 Console.WriteLine("\n\nPLease enter\n\nS - To stay with your case \nT - To Take case {0}", finalCase);
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.Write("S / T : ");
@@ -518,7 +518,7 @@ namespace DealorNoDeal
                 choice = Convert.ToChar(temp.Substring(0, 1).ToUpper());
                 Console.ResetColor();
 
-                if (choice != 'S' && choice != 'T')
+                if (choice != 'S' && choice != 'T')                                                             //Check user input is right, throw an error message if it is out of bounds. 
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("\n\tERROR!");
@@ -531,7 +531,7 @@ namespace DealorNoDeal
 
             } while (choice != 'S' && choice != 'T');
 
-            if (choice == 'T')
+            if (choice == 'T')                                                                                  //If statments to show the player the value in their chosen case and in the other case. 
             {
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.White;
@@ -551,9 +551,9 @@ namespace DealorNoDeal
 
         }
 
-        public static void TurnSequence(ref Object[] cases, int casetmp)
+        public static void TurnSequence(ref Object[] cases, int casetmp)                          //Method runs everytime the player takes a turn. 
         {
-            int choice,temp;
+            int choice;
             string tmp;
             Console.Clear();
 
@@ -561,7 +561,7 @@ namespace DealorNoDeal
             {
                 do
                 {
-                    Console.ForegroundColor = ConsoleColor.DarkGreen;                            //Change Title Color to Yellow  
+                    Console.ForegroundColor = ConsoleColor.Green;                            //Change Title Color to Yellow  
                     Console.WriteLine("\t\t   __________________________________________________________________________________________________________________");
                     Console.WriteLine("\t\t  /                                                                                                                  \\");
                     Console.WriteLine("\t\t  | ██████╗ ███████╗ █████╗ ██╗          ██████╗ ██████╗     ███╗   ██╗ ██████╗     ██████╗ ███████╗ █████╗ ██╗      |");
@@ -572,10 +572,14 @@ namespace DealorNoDeal
                     Console.WriteLine("\t\t  | ╚═════╝ ╚══════╝╚═╝  ╚═╝╚══════╝     ╚═════╝ ╚═╝  ╚═╝    ╚═╝  ╚═══╝ ╚═════╝     ╚═════╝ ╚══════╝╚═╝  ╚═╝╚══════╝ |");
                     Console.WriteLine("\t\t  \\__________________________________________________________________________________________________________________/");
                     Console.WriteLine(" ");
-                    Console.ResetColor();                                                     //Reset text color
+                    Console.ResetColor();                                                       //Reset text color
                     Console.WriteLine("");
                     Console.WriteLine("");
-
+                    /*
+                     * A series of for loops to proceduraly draw each part of the game board line by line.
+                     * i,j,l are control variables, i = which slot the bank value is in, l = which case is being drawn, j = which part of the case needs to be drawn. 
+                     * Code cycles through each line and anything that is deemed to be 'chosen' is drawn in black so that it 'dissapears' against the console backround. 
+                     */
                     int i = 0;
                     int j = 0;
                     int l = 0;
@@ -820,7 +824,7 @@ namespace DealorNoDeal
 
                     Console.Write("{0:c0}\n", emp.PadLeft(20));
 
-                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ForegroundColor = ConsoleColor.White;                               //Draw line to distinguish board and player options.
                     Console.WriteLine("\n\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
                     Console.WriteLine("\nYour case = {0}...",casetmp);
 
@@ -828,7 +832,7 @@ namespace DealorNoDeal
                     tmp = Console.ReadLine();
                     choice = Convert.ToInt32(tmp);
 
-                    if (choice < 1 || choice > 26)
+                    if (choice < 1 || choice > 26)                                              //Statement to check if the player choice is out of range of the case numbers.
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("\n    {0} is not a valid choice! Please pick a case between 1 and 26", choice);
@@ -839,7 +843,7 @@ namespace DealorNoDeal
 
                 } while (choice < 1 || choice > 26);
 
-                if (cases[choice - 1].caseOpened == true)
+                if (cases[choice - 1].caseOpened == true)                                        //Statement to check if the player choice is an already chosen case.
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("\n    Case {0} Has already been chosen! Please pick an availible case!", choice);
@@ -850,10 +854,10 @@ namespace DealorNoDeal
 
             } while (cases[choice - 1].caseOpened == true);
 
-            cases[choice - 1].caseOpened = true;
+            cases[choice - 1].caseOpened = true;                                                 //Change the state of the players chosen case and money value to 'opened' and 'chosen' via booleans.
             cases[choice - 1].boredChosen = true;
 
-            Console.Write("\nYou picked Case" );
+            Console.Write("\nYou picked Case" );                                                 //Display what the player has chosen. 
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write("\t{0}", choice);
             Console.ForegroundColor = ConsoleColor.White;
@@ -865,7 +869,7 @@ namespace DealorNoDeal
             Console.Clear();
         }
 
-        public static string Money(Object [] cases, ref int i)
+        public static string Money(Object [] cases, ref int i)                                  //Check the if the 'money' at slot i has been chosen. Draw in colour if 'no', or in black if 'yes.'
         {
             string temp = " ";
             if (cases[i].boredChosen == false)
@@ -880,19 +884,19 @@ namespace DealorNoDeal
                 temp = Convert.ToString(cases[i].number);
             }
 
-            i++;
+            i++;                                                                                //incirment the value of i.
 
-            return temp; 
+            return temp;                                                                        //Return the value.
         
         }
 
-        public static string CaseDraw(Object[] cases, ref int l,ref int j)
+        public static string CaseDraw(Object[] cases, ref int l,ref int j)                      //Method for drawing the cases line by line. Colour if not yet chose, blank if chosen.
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
             string temp = " ";
             if (cases[j].caseOpened == false)
             {
-                switch (l)
+                switch (l)                                                                      //Switch statment based of the control variable 'l' to decide which part of the case to draw.
                 {
                     case 1:
                         temp = "_______";
@@ -905,13 +909,13 @@ namespace DealorNoDeal
                     case 3:
                         if (j > 8)
                         {
-                            temp = $"|  {j + 1} |";
+                            temp = $"|  {j + 1} |";                                             //Write the case number with the control variable 'j'.
                             break;
                         }
 
                         else
                         {
-                            temp = $"|  {j + 1}  |";
+                            temp = $"|  {j + 1}  |";                                            //Re-adjust drawing if number is above '9' so all values line up nicely.
                             break;
                         }
 
@@ -921,7 +925,7 @@ namespace DealorNoDeal
                 }
             }
 
-            if (cases[j].caseOpened == true)
+            if (cases[j].caseOpened == true)                                                    //Draw blank if case has been chosen. 
             {
                 temp = "       ";
             }
