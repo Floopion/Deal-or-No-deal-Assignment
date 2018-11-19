@@ -183,7 +183,7 @@ namespace DealorNoDeal
                 Console.WriteLine("\t{0}\t{1}\t{2}", position[i].last.PadRight(15), position[i].first.PadRight(15), position[i].hobby);
             }
 
-            Console.WriteLine("\nPress any key to exit");
+            Console.WriteLine("\nPress ENTER to return to the main menu");
             Console.ReadLine();
         }
 
@@ -217,7 +217,7 @@ namespace DealorNoDeal
                 }
                 Console.Write("\nWhich Contestant would you like to update? (Please enter their");                 //Ask for last name adding colour.
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.Write(" Last Name ");
+                Console.Write(" First Name ");
                 Console.ResetColor();
                 Console.Write("): ");
                 wanted = Console.ReadLine();
@@ -561,10 +561,10 @@ namespace DealorNoDeal
             Console.WriteLine("");
             Console.ResetColor();
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("\n\n\t THE CHOSEN CONTESTANT IS:");
+            Console.WriteLine("\n\t THE CHOSEN CONTESTANT IS:");
             Console.ResetColor();
-            Console.WriteLine("\n\n\n\t {0}\t{1}\t{2}!", position[contestant].last, position[contestant].first, position[contestant].hobby);
-            Console.WriteLine("\n\n\n\t Press Enter to return to the main menu");
+            Console.WriteLine("\n\n\n\t {0} {1} Who {2}!", position[contestant].last, position[contestant].first, position[contestant].hobby);
+            Console.WriteLine("\n\n\n\t\t Press Enter to return to the main menu");
             Console.ReadLine();
 
         }
