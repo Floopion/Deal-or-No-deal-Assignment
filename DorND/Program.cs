@@ -175,7 +175,7 @@ namespace DealorNoDeal
             Console.WriteLine("  | ╚██████╗╚██████╔╝██║ ╚████║   ██║   ███████╗███████║   ██║   ██║  ██║██║ ╚████║   ██║   ███████║    |");
             Console.WriteLine("  |  ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝   ╚═╝   ╚══════╝    |");
             Console.WriteLine("  \\___________________________________________________________________________________________________ /");
-            Console.WriteLine(" ");
+            Console.WriteLine(" \n");
             Console.ResetColor();
 
             for (int i = 0; i < position.Length; i++)                                 //For loop that itterates through the array using padding to lay it out attractivley. 
@@ -183,7 +183,7 @@ namespace DealorNoDeal
                 Console.WriteLine("\t{0}\t{1}\t{2}", position[i].last.PadRight(15), position[i].first.PadRight(15), position[i].hobby);
             }
 
-            Console.WriteLine("\nPress ENTER to return to the main menu");
+            Console.WriteLine("\n\nPress ENTER to return to the main menu");
             Console.ReadLine();
         }
 
@@ -208,7 +208,7 @@ namespace DealorNoDeal
                 Console.WriteLine("\t  |  ╚═════╝ ╚═╝     ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝|");
                 Console.WriteLine("\t  \\___________________________________________________/");
                 Console.WriteLine(" ");
-                Console.WriteLine("");
+                Console.WriteLine("\n");
                 Console.ResetColor();                                                     //Reset text color
 
                 for (int i = 0; i < search.Length; i++)                               //Print list of contestants out again.
@@ -231,15 +231,15 @@ namespace DealorNoDeal
 
                         Console.WriteLine("The current details for this contestant are:\n\n  {0}\t{1}\t{2}", search[i].last, search[i].first, search[i].hobby);
 
-                        Console.WriteLine("\n\nWhat would you like the new Surname to be?:");
+                        Console.WriteLine("\n\nWhat would you like the new FIRST NAME  to be?:");
                         newlast = Console.ReadLine();
                         search[i].last = newlast;
 
-                        Console.WriteLine("\n\nWhat would you like the first name to be?:");
+                        Console.WriteLine("\n\nWhat would you like the new SURNAME to be?:");
                         newBrand = Console.ReadLine();
                         search[i].first = newBrand;
 
-                        Console.WriteLine("\n\nWhat would you like the new hobby to be?:");
+                        Console.WriteLine("\n\nWhat would you like the new HOBBY to be?:");
                         newhobby = Console.ReadLine();
                         search[i].hobby = newhobby;
 
@@ -564,7 +564,7 @@ namespace DealorNoDeal
             Console.WriteLine("\n\t THE CHOSEN CONTESTANT IS:");
             Console.ResetColor();
             Console.WriteLine("\n\n\n\t {0} {1} Who {2}!", position[contestant].last, position[contestant].first, position[contestant].hobby);
-            Console.WriteLine("\n\n\n\t\t Press Enter to return to the main menu");
+            Console.WriteLine("\n\n\n\t Press Enter to return to the main menu");
             Console.ReadLine();
 
         }
@@ -642,7 +642,7 @@ namespace DealorNoDeal
                 Console.WriteLine("");
                 Console.ResetColor();
 
-                Console.WriteLine("\t Please Choose a case between 1 and 26:");
+                Console.WriteLine("Please Choose a case between 1 and 26:");
                 tmp = Console.ReadLine();
                 casetmp = Convert.ToInt32(tmp);
 
@@ -711,9 +711,22 @@ namespace DealorNoDeal
             if (lastTurn == false)                                                            //If its not the final turn, Show how much the player won and what was in their chosen case. 
             {
                 Console.Clear();
+                Console.ForegroundColor = ConsoleColor.DarkGreen;                            //Change Title Color to Yellow  
+                Console.WriteLine("\t   ________________________________________________________________ ");
+                Console.WriteLine("\t  /                                                                \\");
+                Console.WriteLine("\t  | ██╗    ██╗██╗███╗   ██╗███╗   ██╗██╗███╗   ██╗ ██████╗ ███████╗|");
+                Console.WriteLine("\t  | ██║    ██║██║████╗  ██║████╗  ██║██║████╗  ██║██╔════╝ ██╔════╝|");
+                Console.WriteLine("\t  | ██║ █╗ ██║██║██╔██╗ ██║██╔██╗ ██║██║██╔██╗ ██║██║  ███╗███████╗|");
+                Console.WriteLine("\t  | ██║███╗██║██║██║╚██╗██║██║╚██╗██║██║██║╚██╗██║██║   ██║╚════██║|");
+                Console.WriteLine("\t  | ╚███╔███╔╝██║██║ ╚████║██║ ╚████║██║██║ ╚████║╚██████╔╝███████||");
+                Console.WriteLine("\t  |  ╚══╝╚══╝ ╚═╝╚═╝  ╚═══╝╚═╝  ╚═══╝╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚══════╝|");
+                Console.WriteLine("\t  \\________________________________________________________________/");
+                Console.WriteLine(" ");
+                Console.WriteLine("");
+                Console.ResetColor();
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("You won : {0:c0}!", playerWins);
-                Console.WriteLine("\nYour case contained {0:c0}...", playerCase);
+                Console.WriteLine("\n\t You won : {0:c0}!", playerWins);
+                Console.WriteLine("\n\t our case contained {0:c0}...", playerCase);
                 Console.ReadLine();
             }
         }
@@ -739,12 +752,27 @@ namespace DealorNoDeal
 
             do
             {
+                Console.ForegroundColor = ConsoleColor.DarkGreen;                            //Change Title Color to Yellow  
+                Console.WriteLine("\t   ________________________________________________________________________________ ");
+                Console.WriteLine("\t  /                                                                                \\");
+                Console.WriteLine("\t  | ██████╗  █████╗ ███╗   ██╗██╗  ██╗     ██████╗ ███████╗███████╗███████╗██████╗ |");
+                Console.WriteLine("\t  | ██╔══██╗██╔══██╗████╗  ██║██║ ██╔╝    ██╔═══██╗██╔════╝██╔════╝██╔════╝██╔══██╗|");
+                Console.WriteLine("\t  | ██████╔╝███████║██╔██╗ ██║█████╔╝     ██║   ██║█████╗  █████╗  █████╗  ██████╔╝|");
+                Console.WriteLine("\t  | ██╔══██╗██╔══██║██║╚██╗██║██╔═██╗     ██║   ██║██╔══╝  ██╔══╝  ██╔══╝  ██╔══██||");
+                Console.WriteLine("\t  | ██████╔╝██║  ██║██║ ╚████║██║  ██╗    ╚██████╔╝██║     ██║     ███████╗██║  ██║|");
+                Console.WriteLine("\t  | ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝     ╚═════╝ ╚═╝     ╚═╝     ╚══════╝╚═╝  ╚═╝|");
+                Console.WriteLine("\t  \\_______________________________________________________________________________/");
+                Console.WriteLine(" ");
+                Console.WriteLine("");
+                Console.ResetColor();
+
+
                 Console.ForegroundColor = ConsoleColor.White;                              //Display the bank offer and ask player if the want to take the ammount as their prize. 
-                Console.WriteLine("The bank offers you ");
+                Console.WriteLine("\t The bank offers you ");
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.Write("   {0:c0}", offer);
+                Console.Write("\t\t\t   {0:c0}", offer);
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.Write("\n\nDeal or No Deal? ");
+                Console.Write("\n\n\t Deal or No Deal? ");
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.Write("D / ND : ");
                 temp = Console.ReadLine();
@@ -754,10 +782,10 @@ namespace DealorNoDeal
                 if (choice != 'D' && choice != 'N')                                         //Check that the input is either D or ND and throw an error message if its not true. 
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("\n\tERROR!");
+                    Console.WriteLine("\n\t\t ERROR!");
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("\nPLease enter\n\nD - To take the bank offer\nND - To Keep Playing ");
-                    Console.WriteLine("\nPress ANY KEY to continue ...");
+                    Console.WriteLine("\n\t PLease enter\n\nD - To take the bank offer\nND - To Keep Playing ");
+                    Console.WriteLine("\n\t Press ANY KEY to continue ...");
                     Console.ReadLine();
                     Console.Clear();
                 }
@@ -847,11 +875,24 @@ namespace DealorNoDeal
             }
             do
             {
+                Console.ForegroundColor = ConsoleColor.DarkGreen;                            //Change Title Color to Yellow  
+                Console.WriteLine("\t   ______________________________________________________________________________ ");
+                Console.WriteLine("\t  /                                                                              \\");
+                Console.WriteLine("\t  | ███████╗██╗███╗   ██╗ █████╗ ██╗         ████████╗██╗   ██╗██████╗ ███╗   ██╗|");
+                Console.WriteLine("\t  | ██╔════╝██║████╗  ██║██╔══██╗██║         ╚══██╔══╝██║   ██║██╔══██╗████╗  ██║|");
+                Console.WriteLine("\t  | █████╗  ██║██╔██╗ ██║███████║██║            ██║   ██║   ██║██████╔╝██╔██╗ ██║|");
+                Console.WriteLine("\t  | ██╔══╝  ██║██║╚██╗██║██╔══██║██║            ██║   ██║   ██║██╔══██╗██║╚██╗██║|");
+                Console.WriteLine("\t  | ██║     ██║██║ ╚████║██║  ██║███████╗       ██║   ╚██████╔╝██║  ██║██║ ╚████║|");
+                Console.WriteLine("\t  | ╚═╝     ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝       ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝|");
+                Console.WriteLine("\t  \\______________________________________________________________________________/");
+                Console.WriteLine(" ");
+                Console.WriteLine("");
+                Console.ResetColor();                                                     //Reset text color
 
-                Console.WriteLine("Do you want to take your case or case {0}?", finalCase);                     //Ask player if they would like to stay with their case or take the one left on the board. 
-                Console.WriteLine("\n\nPLease enter\n\nS - To stay with your case \nT - To Take case {0}", finalCase);
+                Console.WriteLine("\t Do you want to take your case or case {0}?", finalCase);                     //Ask player if they would like to stay with their case or take the one left on the board. 
+                Console.WriteLine("\n\n\t PLease enter\n\n\t S - To stay with your case \n\t T - To Take case {0}", finalCase);
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.Write("S / T : ");
+                Console.Write("\n\t S / T : ");
                 Console.ResetColor();
                 temp = Console.ReadLine();
                 choice = Convert.ToChar(temp.Substring(0, 1).ToUpper());
@@ -860,10 +901,10 @@ namespace DealorNoDeal
                 if (choice != 'S' && choice != 'T')                                                             //Check user input is right, throw an error message if it is out of bounds. 
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("\n\tERROR!");
+                    Console.WriteLine("\n\t\t ERROR!");
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("\nPLease enter\n\nS - To stay with your case \nT - To Take case {0}", finalCase);
-                    Console.WriteLine("\nPress ANY KEY to continue ...");
+                    Console.WriteLine("\n\t PLease enter\n\nS - To stay with your case \nT - To Take case {0}", finalCase);
+                    Console.WriteLine("\n\t Press ANY KEY to continue ...");
                     Console.ReadLine();
                     Console.Clear();
                 }
@@ -873,18 +914,45 @@ namespace DealorNoDeal
             if (choice == 'T')                                                                                  //If statments to show the player the value in their chosen case and in the other case. 
             {
                 Console.Clear();
+                Console.ForegroundColor = ConsoleColor.DarkGreen;                            //Change Title Color to Yellow  
+                Console.WriteLine("\t   ______________________________________________________________________________ ");
+                Console.WriteLine("\t  /                                                                              \\");
+                Console.WriteLine("\t  | ███████╗██╗███╗   ██╗ █████╗ ██╗         ████████╗██╗   ██╗██████╗ ███╗   ██╗|");
+                Console.WriteLine("\t  | ██╔════╝██║████╗  ██║██╔══██╗██║         ╚══██╔══╝██║   ██║██╔══██╗████╗  ██║|");
+                Console.WriteLine("\t  | █████╗  ██║██╔██╗ ██║███████║██║            ██║   ██║   ██║██████╔╝██╔██╗ ██║|");
+                Console.WriteLine("\t  | ██╔══╝  ██║██║╚██╗██║██╔══██║██║            ██║   ██║   ██║██╔══██╗██║╚██╗██║|");
+                Console.WriteLine("\t  | ██║     ██║██║ ╚████║██║  ██║███████╗       ██║   ╚██████╔╝██║  ██║██║ ╚████║|");
+                Console.WriteLine("\t  | ╚═╝     ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝       ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝|");
+                Console.WriteLine("\t  \\______________________________________________________________________________/");
+                Console.WriteLine(" ");
+                Console.WriteLine("");
+                Console.ResetColor();                                                     //Reset text color
+
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("You won : {0:c0}!", finalCash);
-                Console.WriteLine("\nYour case contained {0:c0}...", playerCase);
+                Console.WriteLine("\n\t You won : {0:c0}!", finalCash);
+                Console.WriteLine("\n\t Your case contained {0:c0}...", playerCase);
                 Console.ReadLine();
             }
 
             if (choice == 'S')
             {
                 Console.Clear();
+                Console.ForegroundColor = ConsoleColor.DarkGreen;                            //Change Title Color to Yellow  
+                Console.WriteLine("\t   ______________________________________________________________________________ ");
+                Console.WriteLine("\t  /                                                                              \\");
+                Console.WriteLine("\t  | ███████╗██╗███╗   ██╗ █████╗ ██╗         ████████╗██╗   ██╗██████╗ ███╗   ██╗|");
+                Console.WriteLine("\t  | ██╔════╝██║████╗  ██║██╔══██╗██║         ╚══██╔══╝██║   ██║██╔══██╗████╗  ██║|");
+                Console.WriteLine("\t  | █████╗  ██║██╔██╗ ██║███████║██║            ██║   ██║   ██║██████╔╝██╔██╗ ██║|");
+                Console.WriteLine("\t  | ██╔══╝  ██║██║╚██╗██║██╔══██║██║            ██║   ██║   ██║██╔══██╗██║╚██╗██║|");
+                Console.WriteLine("\t  | ██║     ██║██║ ╚████║██║  ██║███████╗       ██║   ╚██████╔╝██║  ██║██║ ╚████║|");
+                Console.WriteLine("\t  | ╚═╝     ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝       ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝|");
+                Console.WriteLine("\t  \\______________________________________________________________________________/");
+                Console.WriteLine(" ");
+                Console.WriteLine("");
+                Console.ResetColor();                                                     //Reset text color
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("You won : {0:c0}!", playerCase);
-                Console.WriteLine("\nCase {0} contained : {1}!",finalCase,finalCash);
+                Console.WriteLine("\n\t You won : {0:c0}!", playerCase);
+                Console.WriteLine("\n\t Case {0} contained : {1}!",finalCase,finalCash);
                 Console.ReadLine();
             }
 
