@@ -112,6 +112,8 @@ namespace DealorNoDeal
                         {
                             Console.Clear();
                             PlayGame();
+                            gen10 = false;
+                            playgame = false;
                             Console.Clear();
                         }
 
@@ -892,7 +894,7 @@ namespace DealorNoDeal
                 Console.WriteLine("\t Do you want to take your case or case {0}?", finalCase);                     //Ask player if they would like to stay with their case or take the one left on the board. 
                 Console.WriteLine("\n\n\t PLease enter\n\n\t S - To stay with your case \n\t T - To Take case {0}", finalCase);
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.Write("\n\t S / T : ");
+                Console.WriteLine("\n\t S / T : ");
                 Console.ResetColor();
                 temp = Console.ReadLine();
                 choice = Convert.ToChar(temp.Substring(0, 1).ToUpper());
@@ -903,7 +905,7 @@ namespace DealorNoDeal
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("\n\t\t ERROR!");
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("\n\t PLease enter\n\nS - To stay with your case \nT - To Take case {0}", finalCase);
+                    Console.WriteLine("\n\t PLease enter\n\n\t S - To stay with your case \n\t T - To Take case {0}", finalCase);
                     Console.WriteLine("\n\t Press ANY KEY to continue ...");
                     Console.ReadLine();
                     Console.Clear();
