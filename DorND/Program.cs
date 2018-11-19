@@ -30,7 +30,7 @@ namespace DealorNoDeal
 
             Detail[] detailList = new Detail[20];                  //New array of typr 'Detail' to hold contestant details.
 
-            bool exit = false;
+            bool exit = false,gen10 = false,playgame=false;
 
             string tmp;
             int choice;
@@ -81,19 +81,48 @@ namespace DealorNoDeal
 
                     case 3:                                                            //If user input is '3' clear screen and run 'Generate10' method which will generate 10 random contestants.  
                         Console.Clear();
-                        //Generate10();
-                        Console.Clear();
-                        break;
-                    case 4:                                                            //If user input is '4' clear screen and run 'ChoosePlayer' method which will chose the final contestant.
-                        Console.Clear();
-                        //ChoosePlayer();
+                        Generate10(ref detailList);
+                        gen10 = true;
                         Console.Clear();
                         break;
 
+                    case 4:                                                            //If user input is '4' clear screen and run 'ChoosePlayer' method which will chose the final contestant.
+                        
+                        if (gen10 == true)
+                        {
+                            Console.Clear();
+                            ChoosePlayer();
+                            playgame = true;
+                            Console.Clear();
+                        }
+                        
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("\n \tYou must generate finalists before you can pick a contestant to play!");
+                            Console.ForegroundColor = ConsoleColor.White; 
+                            Thread.Sleep(2000);
+                            Console.Clear();
+                        }
+                        break;
+
                     case 5:                                                            //If user input is '1' clear screen and run 'PlayGame' method, it runs the game.   
-                        Console.Clear();
-                        PlayGame();
-                        Console.Clear();
+
+                        if (playgame == true)
+                        {
+                            Console.Clear();
+                            PlayGame();
+                            Console.Clear();
+                        }
+
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("\n \tYou must Pick a finalist before you can start the game!");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Thread.Sleep(2000);
+                            Console.Clear();
+                        }
                         break;
 
                     case 0:
@@ -256,6 +285,48 @@ namespace DealorNoDeal
             } while (again == true);
         }
 
+        public static void Generate10(ref Detail [] position)
+        {
+            int[] num = new int[10];
+            Random rand = new Random();
+            
+            for (int i = 0; i < num.Length;i++ )
+            {
+                int tmp = rand.Next(0, 20);
+                int count = 0; 
+
+                while (count <= i)
+                {
+                    if (tmp == num[count])
+                    {
+                        count = 0;
+                        tmp = rand.Next(0, 20);
+                    }
+
+                    else
+                    {
+                        count = count+1;
+                    }
+                }
+
+                num[i] = tmp;
+
+            }
+
+            for (int j = 0; j < num.Length; j++)
+            {
+                Console.WriteLine("{0}\t{1}\t{2}\t{3}",j+1, position[num[j]].last.PadRight(15), position[num[j]].first.PadRight(15), position[num[j]].hobby);
+            }
+            Console.ReadLine();
+
+        }
+
+        public static void ChoosePlayer()
+        {
+
+
+        }
+
         public static void Assign(ref Object[] shuffle)                           //Method for shuffling the case values. Starts by initiating random variable and hard coding money and case values into the arrays.
         {
             Random rand = new Random();                                          
@@ -314,9 +385,20 @@ namespace DealorNoDeal
 
             do                                                              //Do / While to assign the players case, checking that its within the allowed parameters.
             {
-                Console.WriteLine("Please Choose a case between 1 and 26:\n");
+                Console.WriteLine("Please Choose a case between 1 and 26:");
                 tmp = Console.ReadLine();
                 casetmp = Convert.ToInt32(tmp);
+
+                if (casetmp < 1 || casetmp >26)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\nError please enter a number between 1 and 26!\n");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("\nPress Enter to Continue");
+
+                    Console.ReadLine();
+
+                }
 
                 Console.Clear();
 
@@ -400,7 +482,7 @@ namespace DealorNoDeal
 
             do
             {
-                Console.ForegroundColor = ConsoleColor.White;                              //Display the bank offer and aske player if the want to take the ammount as their prize. 
+                Console.ForegroundColor = ConsoleColor.White;                              //Display the bank offer and ask player if the want to take the ammount as their prize. 
                 Console.WriteLine("The bank offers you ");
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write("   {0:c0}", offer);
@@ -826,7 +908,7 @@ namespace DealorNoDeal
 
                     Console.ForegroundColor = ConsoleColor.White;                               //Draw line to distinguish board and player options.
                     Console.WriteLine("\n\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-                    Console.WriteLine("\nYour case = {0}...",casetmp);
+                    Console.WriteLine("\nYour case = {0}",casetmp);
 
                     Console.WriteLine("\nPick the next case:");
                     tmp = Console.ReadLine();
