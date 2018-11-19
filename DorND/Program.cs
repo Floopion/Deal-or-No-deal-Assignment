@@ -33,7 +33,7 @@ namespace DealorNoDeal
             bool exit = false,gen10 = false,playgame=false;
 
             string tmp;
-            int choice;
+            int choice,contestant=0;
 
             ReadFile(ref detailList);                              //Run the method to read the text file into the struct for the contestants. Pass in the Array
 
@@ -81,7 +81,7 @@ namespace DealorNoDeal
 
                     case 3:                                                            //If user input is '3' clear screen and run 'Generate10' method which will generate 10 random contestants.  
                         Console.Clear();
-                        Generate10(ref detailList);
+                        Generate10(ref detailList,ref contestant);
                         gen10 = true;
                         Console.Clear();
                         break;
@@ -91,7 +91,7 @@ namespace DealorNoDeal
                         if (gen10 == true)
                         {
                             Console.Clear();
-                            ChoosePlayer();
+                            ChoosePlayer(ref detailList, ref contestant);
                             playgame = true;
                             Console.Clear();
                         }
@@ -189,20 +189,6 @@ namespace DealorNoDeal
 
         public static void Search(ref Detail[] search)                                //Method for finding and updating a contestant 
         {
-            Console.ForegroundColor = ConsoleColor.DarkGreen;                            //Change Title Color to Yellow  
-            Console.WriteLine("\t   ___________________________________________________ ");
-            Console.WriteLine("\t  /                                                   \\");
-            Console.WriteLine("\t  | ██╗   ██╗██████╗ ██████╗  █████╗ ████████╗███████╗|");
-            Console.WriteLine("\t  | ██║   ██║██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝██╔════╝|");
-            Console.WriteLine("\t  | ██║   ██║██████╔╝██║  ██║███████║   ██║   █████╗  |");
-            Console.WriteLine("\t  | ██║   ██║██╔═══╝ ██║  ██║██╔══██║   ██║   ██╔══╝  |");
-            Console.WriteLine("\t  | ╚██████╔╝██║     ██████╔╝██║  ██║   ██║   ███████╗|");
-            Console.WriteLine("\t  |  ╚═════╝ ╚═╝     ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝|");
-            Console.WriteLine("\t  \\___________________________________________________/");
-            Console.WriteLine(" ");
-            Console.WriteLine("");
-            Console.ResetColor();                                                     //Reset text color
-
             StreamReader sr = new StreamReader(@"DealOrNoDeal.txt");
             bool found = false, again = true;
 
@@ -210,6 +196,20 @@ namespace DealorNoDeal
             Char tmp2;
             do
             {
+
+                Console.ForegroundColor = ConsoleColor.DarkGreen;                            //Change Title Color to Yellow  
+                Console.WriteLine("\t   ___________________________________________________ ");
+                Console.WriteLine("\t  /                                                   \\");
+                Console.WriteLine("\t  | ██╗   ██╗██████╗ ██████╗  █████╗ ████████╗███████╗|");
+                Console.WriteLine("\t  | ██║   ██║██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝██╔════╝|");
+                Console.WriteLine("\t  | ██║   ██║██████╔╝██║  ██║███████║   ██║   █████╗  |");
+                Console.WriteLine("\t  | ██║   ██║██╔═══╝ ██║  ██║██╔══██║   ██║   ██╔══╝  |");
+                Console.WriteLine("\t  | ╚██████╔╝██║     ██████╔╝██║  ██║   ██║   ███████╗|");
+                Console.WriteLine("\t  |  ╚═════╝ ╚═╝     ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝|");
+                Console.WriteLine("\t  \\___________________________________________________/");
+                Console.WriteLine(" ");
+                Console.WriteLine("");
+                Console.ResetColor();                                                     //Reset text color
 
                 for (int i = 0; i < search.Length; i++)                               //Print list of contestants out again.
                 {
@@ -285,7 +285,7 @@ namespace DealorNoDeal
             } while (again == true);
         }
 
-        public static void Generate10(ref Detail [] position)
+        public static void Generate10(ref Detail [] position, ref int contestant)
         {
             int[] num = new int[10];
             Random rand = new Random();
@@ -313,17 +313,259 @@ namespace DealorNoDeal
 
             }
 
+            Console.ForegroundColor = ConsoleColor.Blue;                            //Change Title Color to Yellow  
+            Console.WriteLine("\t   __________________________________________________________________ ");
+            Console.WriteLine("\t  /                                                                  \\");
+            Console.WriteLine("\t  | ███████╗██╗███╗   ██╗ █████╗ ██╗     ██╗███████╗████████╗███████ |");
+            Console.WriteLine("\t  | ██╔════╝██║████╗  ██║██╔══██╗██║     ██║██╔════╝╚══██╔══╝██╔════╝|");
+            Console.WriteLine("\t  | █████╗  ██║██╔██╗ ██║███████║██║     ██║███████╗   ██║   ███████╗|");
+            Console.WriteLine("\t  | ██╔══╝  ██║██║╚██╗██║██╔══██║██║     ██║╚════██║   ██║   ╚════██║|");
+            Console.WriteLine("\t  | ██║     ██║██║ ╚████║██║  ██║███████╗██║███████║   ██║   ███████║|");
+            Console.WriteLine("\t  | ╚═╝     ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝╚═╝╚══════╝   ╚═╝   ╚══════╝|");
+            Console.WriteLine("\t  \\__________________________________________________________________/");
+            Console.WriteLine(" ");
+            Console.WriteLine("");
+            Console.ResetColor();
+
             for (int j = 0; j < num.Length; j++)
             {
-                Console.WriteLine("{0}\t{1}\t{2}\t{3}",j+1, position[num[j]].last.PadRight(15), position[num[j]].first.PadRight(15), position[num[j]].hobby);
+                Console.WriteLine("\t{0}\t{1}\t{2}\t{3}",j+1, position[num[j]].last.PadRight(15), position[num[j]].first.PadRight(15), position[num[j]].hobby);
             }
-            Console.ReadLine();
 
+
+            Console.WriteLine("\n\n\t Push ENTER to return to the main menu");
+            Console.ReadLine();
+            int temp = rand.Next(0, 10);
+            contestant = num[temp];
         }
 
-        public static void ChoosePlayer()
+        public static void ChoosePlayer(ref Detail[] position, ref int contestant)
         {
+                Console.ForegroundColor = ConsoleColor.DarkRed;                            //Change Title Color to Yellow  
+                Console.WriteLine("\t   _________________________________________________________________________________________ ");
+                Console.WriteLine("\t  /                                                                                         \\");
+                Console.WriteLine("\t  |  ██████╗ ██████╗ ███╗   ██╗████████╗███████╗███████╗████████╗ █████╗ ███╗   ██╗████████╗|");
+                Console.WriteLine("\t  | ██╔════╝██╔═══██╗████╗  ██║╚══██╔══╝██╔════╝██╔════╝╚══██╔══╝██╔══██╗████╗  ██║╚══██╔══╝|");
+                Console.WriteLine("\t  | ██║     ██║   ██║██╔██╗ ██║   ██║   █████╗  ███████╗   ██║   ███████║██╔██╗ ██║   ██║   |");
+                Console.WriteLine("\t  | ██║     ██║   ██║██║╚██╗██║   ██║   ██╔══╝  ╚════██║   ██║   ██╔══██║██║╚██╗██║   ██║   |");
+                Console.WriteLine("\t  | ╚██████╗╚██████╔╝██║ ╚████║   ██║   ███████╗███████║   ██║   ██║  ██║██║ ╚████║   ██║   |");
+                Console.WriteLine("\t  |  ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝   ╚═╝   |");
+                Console.WriteLine("\t  \\_________________________________________________________________________________________/");
+                Console.WriteLine(" ");
+                Console.WriteLine("");
+                Console.ResetColor();
+                Console.WriteLine("\n\t Shuffling.");
+                Thread.Sleep(700);
+                Console.Clear();
 
+                Console.ForegroundColor = ConsoleColor.DarkRed;                            //Change Title Color to Yellow  
+                Console.WriteLine("\t   _________________________________________________________________________________________ ");
+                Console.WriteLine("\t  /                                                                                         \\");
+                Console.WriteLine("\t  |  ██████╗ ██████╗ ███╗   ██╗████████╗███████╗███████╗████████╗ █████╗ ███╗   ██╗████████╗|");
+                Console.WriteLine("\t  | ██╔════╝██╔═══██╗████╗  ██║╚══██╔══╝██╔════╝██╔════╝╚══██╔══╝██╔══██╗████╗  ██║╚══██╔══╝|");
+                Console.WriteLine("\t  | ██║     ██║   ██║██╔██╗ ██║   ██║   █████╗  ███████╗   ██║   ███████║██╔██╗ ██║   ██║   |");
+                Console.WriteLine("\t  | ██║     ██║   ██║██║╚██╗██║   ██║   ██╔══╝  ╚════██║   ██║   ██╔══██║██║╚██╗██║   ██║   |");
+                Console.WriteLine("\t  | ╚██████╗╚██████╔╝██║ ╚████║   ██║   ███████╗███████║   ██║   ██║  ██║██║ ╚████║   ██║   |");
+                Console.WriteLine("\t  |  ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝   ╚═╝   |");
+                Console.WriteLine("\t  \\_________________________________________________________________________________________/");
+                Console.WriteLine(" ");
+                Console.WriteLine("");
+                Console.ResetColor();
+                Console.WriteLine("\n\t Shuffling..");
+                Thread.Sleep(700);
+                Console.Clear();
+
+                Console.ForegroundColor = ConsoleColor.DarkRed;                            //Change Title Color to Yellow  
+                Console.WriteLine("\t   _________________________________________________________________________________________ ");
+                Console.WriteLine("\t  /                                                                                         \\");
+                Console.WriteLine("\t  |  ██████╗ ██████╗ ███╗   ██╗████████╗███████╗███████╗████████╗ █████╗ ███╗   ██╗████████╗|");
+                Console.WriteLine("\t  | ██╔════╝██╔═══██╗████╗  ██║╚══██╔══╝██╔════╝██╔════╝╚══██╔══╝██╔══██╗████╗  ██║╚══██╔══╝|");
+                Console.WriteLine("\t  | ██║     ██║   ██║██╔██╗ ██║   ██║   █████╗  ███████╗   ██║   ███████║██╔██╗ ██║   ██║   |");
+                Console.WriteLine("\t  | ██║     ██║   ██║██║╚██╗██║   ██║   ██╔══╝  ╚════██║   ██║   ██╔══██║██║╚██╗██║   ██║   |");
+                Console.WriteLine("\t  | ╚██████╗╚██████╔╝██║ ╚████║   ██║   ███████╗███████║   ██║   ██║  ██║██║ ╚████║   ██║   |");
+                Console.WriteLine("\t  |  ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝   ╚═╝   |");
+                Console.WriteLine("\t  \\_________________________________________________________________________________________/");
+                Console.WriteLine(" ");
+                Console.WriteLine("");
+                Console.ResetColor();
+                Console.WriteLine("\n\t Shuffling...");
+                Thread.Sleep(700);
+                Console.Clear();
+
+                Console.ForegroundColor = ConsoleColor.DarkRed;                            //Change Title Color to Yellow  
+                Console.WriteLine("\t   _________________________________________________________________________________________ ");
+                Console.WriteLine("\t  /                                                                                         \\");
+                Console.WriteLine("\t  |  ██████╗ ██████╗ ███╗   ██╗████████╗███████╗███████╗████████╗ █████╗ ███╗   ██╗████████╗|");
+                Console.WriteLine("\t  | ██╔════╝██╔═══██╗████╗  ██║╚══██╔══╝██╔════╝██╔════╝╚══██╔══╝██╔══██╗████╗  ██║╚══██╔══╝|");
+                Console.WriteLine("\t  | ██║     ██║   ██║██╔██╗ ██║   ██║   █████╗  ███████╗   ██║   ███████║██╔██╗ ██║   ██║   |");
+                Console.WriteLine("\t  | ██║     ██║   ██║██║╚██╗██║   ██║   ██╔══╝  ╚════██║   ██║   ██╔══██║██║╚██╗██║   ██║   |");
+                Console.WriteLine("\t  | ╚██████╗╚██████╔╝██║ ╚████║   ██║   ███████╗███████║   ██║   ██║  ██║██║ ╚████║   ██║   |");
+                Console.WriteLine("\t  |  ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝   ╚═╝   |");
+                Console.WriteLine("\t  \\_________________________________________________________________________________________/");
+                Console.WriteLine(" ");
+                Console.WriteLine("");
+                Console.ResetColor();
+                Console.WriteLine("\n\t Shuffling....");
+                Thread.Sleep(700);
+                Console.Clear();
+
+            Console.ForegroundColor = ConsoleColor.DarkRed;                            //Change Title Color to Yellow  
+            Console.WriteLine("\t   _________________________________________________________________________________________ ");
+            Console.WriteLine("\t  /                                                                                         \\");
+            Console.WriteLine("\t  |  ██████╗ ██████╗ ███╗   ██╗████████╗███████╗███████╗████████╗ █████╗ ███╗   ██╗████████╗|");
+            Console.WriteLine("\t  | ██╔════╝██╔═══██╗████╗  ██║╚══██╔══╝██╔════╝██╔════╝╚══██╔══╝██╔══██╗████╗  ██║╚══██╔══╝|");
+            Console.WriteLine("\t  | ██║     ██║   ██║██╔██╗ ██║   ██║   █████╗  ███████╗   ██║   ███████║██╔██╗ ██║   ██║   |");
+            Console.WriteLine("\t  | ██║     ██║   ██║██║╚██╗██║   ██║   ██╔══╝  ╚════██║   ██║   ██╔══██║██║╚██╗██║   ██║   |");
+            Console.WriteLine("\t  | ╚██████╗╚██████╔╝██║ ╚████║   ██║   ███████╗███████║   ██║   ██║  ██║██║ ╚████║   ██║   |");
+            Console.WriteLine("\t  |  ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝   ╚═╝   |");
+            Console.WriteLine("\t  \\_________________________________________________________________________________________/");
+            Console.WriteLine(" ");
+            Console.WriteLine("");
+            Console.ResetColor();
+            Console.WriteLine("\n\t Narrowing Choices.");
+            Thread.Sleep(700);
+            Console.Clear();
+
+            Console.ForegroundColor = ConsoleColor.DarkRed;                            //Change Title Color to Yellow  
+            Console.WriteLine("\t   _________________________________________________________________________________________ ");
+            Console.WriteLine("\t  /                                                                                         \\");
+            Console.WriteLine("\t  |  ██████╗ ██████╗ ███╗   ██╗████████╗███████╗███████╗████████╗ █████╗ ███╗   ██╗████████╗|");
+            Console.WriteLine("\t  | ██╔════╝██╔═══██╗████╗  ██║╚══██╔══╝██╔════╝██╔════╝╚══██╔══╝██╔══██╗████╗  ██║╚══██╔══╝|");
+            Console.WriteLine("\t  | ██║     ██║   ██║██╔██╗ ██║   ██║   █████╗  ███████╗   ██║   ███████║██╔██╗ ██║   ██║   |");
+            Console.WriteLine("\t  | ██║     ██║   ██║██║╚██╗██║   ██║   ██╔══╝  ╚════██║   ██║   ██╔══██║██║╚██╗██║   ██║   |");
+            Console.WriteLine("\t  | ╚██████╗╚██████╔╝██║ ╚████║   ██║   ███████╗███████║   ██║   ██║  ██║██║ ╚████║   ██║   |");
+            Console.WriteLine("\t  |  ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝   ╚═╝   |");
+            Console.WriteLine("\t  \\_________________________________________________________________________________________/");
+            Console.WriteLine(" ");
+            Console.WriteLine("");
+            Console.ResetColor();
+            Console.WriteLine("\n\t Narrowing Choices..");
+            Thread.Sleep(700);
+            Console.Clear();
+
+            Console.ForegroundColor = ConsoleColor.DarkRed;                            //Change Title Color to Yellow  
+            Console.WriteLine("\t   _________________________________________________________________________________________ ");
+            Console.WriteLine("\t  /                                                                                         \\");
+            Console.WriteLine("\t  |  ██████╗ ██████╗ ███╗   ██╗████████╗███████╗███████╗████████╗ █████╗ ███╗   ██╗████████╗|");
+            Console.WriteLine("\t  | ██╔════╝██╔═══██╗████╗  ██║╚══██╔══╝██╔════╝██╔════╝╚══██╔══╝██╔══██╗████╗  ██║╚══██╔══╝|");
+            Console.WriteLine("\t  | ██║     ██║   ██║██╔██╗ ██║   ██║   █████╗  ███████╗   ██║   ███████║██╔██╗ ██║   ██║   |");
+            Console.WriteLine("\t  | ██║     ██║   ██║██║╚██╗██║   ██║   ██╔══╝  ╚════██║   ██║   ██╔══██║██║╚██╗██║   ██║   |");
+            Console.WriteLine("\t  | ╚██████╗╚██████╔╝██║ ╚████║   ██║   ███████╗███████║   ██║   ██║  ██║██║ ╚████║   ██║   |");
+            Console.WriteLine("\t  |  ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝   ╚═╝   |");
+            Console.WriteLine("\t  \\_________________________________________________________________________________________/");
+            Console.WriteLine(" ");
+            Console.WriteLine("");
+            Console.ResetColor();
+            Console.WriteLine("\n\t Narrowing Choices...");
+            Thread.Sleep(700);
+            Console.Clear();
+
+            Console.ForegroundColor = ConsoleColor.DarkRed;                            //Change Title Color to Yellow  
+            Console.WriteLine("\t   _________________________________________________________________________________________ ");
+            Console.WriteLine("\t  /                                                                                         \\");
+            Console.WriteLine("\t  |  ██████╗ ██████╗ ███╗   ██╗████████╗███████╗███████╗████████╗ █████╗ ███╗   ██╗████████╗|");
+            Console.WriteLine("\t  | ██╔════╝██╔═══██╗████╗  ██║╚══██╔══╝██╔════╝██╔════╝╚══██╔══╝██╔══██╗████╗  ██║╚══██╔══╝|");
+            Console.WriteLine("\t  | ██║     ██║   ██║██╔██╗ ██║   ██║   █████╗  ███████╗   ██║   ███████║██╔██╗ ██║   ██║   |");
+            Console.WriteLine("\t  | ██║     ██║   ██║██║╚██╗██║   ██║   ██╔══╝  ╚════██║   ██║   ██╔══██║██║╚██╗██║   ██║   |");
+            Console.WriteLine("\t  | ╚██████╗╚██████╔╝██║ ╚████║   ██║   ███████╗███████║   ██║   ██║  ██║██║ ╚████║   ██║   |");
+            Console.WriteLine("\t  |  ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝   ╚═╝   |");
+            Console.WriteLine("\t  \\_________________________________________________________________________________________/");
+            Console.WriteLine(" ");
+            Console.WriteLine("");
+            Console.ResetColor();
+            Console.WriteLine("\n\t Narrowing Choices....");
+            Thread.Sleep(700);
+            Console.Clear();
+
+            Console.ForegroundColor = ConsoleColor.DarkRed;                            //Change Title Color to Yellow  
+            Console.WriteLine("\t   _________________________________________________________________________________________ ");
+            Console.WriteLine("\t  /                                                                                         \\");
+            Console.WriteLine("\t  |  ██████╗ ██████╗ ███╗   ██╗████████╗███████╗███████╗████████╗ █████╗ ███╗   ██╗████████╗|");
+            Console.WriteLine("\t  | ██╔════╝██╔═══██╗████╗  ██║╚══██╔══╝██╔════╝██╔════╝╚══██╔══╝██╔══██╗████╗  ██║╚══██╔══╝|");
+            Console.WriteLine("\t  | ██║     ██║   ██║██╔██╗ ██║   ██║   █████╗  ███████╗   ██║   ███████║██╔██╗ ██║   ██║   |");
+            Console.WriteLine("\t  | ██║     ██║   ██║██║╚██╗██║   ██║   ██╔══╝  ╚════██║   ██║   ██╔══██║██║╚██╗██║   ██║   |");
+            Console.WriteLine("\t  | ╚██████╗╚██████╔╝██║ ╚████║   ██║   ███████╗███████║   ██║   ██║  ██║██║ ╚████║   ██║   |");
+            Console.WriteLine("\t  |  ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝   ╚═╝   |");
+            Console.WriteLine("\t  \\_________________________________________________________________________________________/");
+            Console.WriteLine(" ");
+            Console.WriteLine("");
+            Console.ResetColor();
+            Console.WriteLine("\n\t Choosing.");
+            Thread.Sleep(700);
+            Console.Clear();
+
+            Console.ForegroundColor = ConsoleColor.DarkRed;                            //Change Title Color to Yellow  
+            Console.WriteLine("\t   _________________________________________________________________________________________ ");
+            Console.WriteLine("\t  /                                                                                         \\");
+            Console.WriteLine("\t  |  ██████╗ ██████╗ ███╗   ██╗████████╗███████╗███████╗████████╗ █████╗ ███╗   ██╗████████╗|");
+            Console.WriteLine("\t  | ██╔════╝██╔═══██╗████╗  ██║╚══██╔══╝██╔════╝██╔════╝╚══██╔══╝██╔══██╗████╗  ██║╚══██╔══╝|");
+            Console.WriteLine("\t  | ██║     ██║   ██║██╔██╗ ██║   ██║   █████╗  ███████╗   ██║   ███████║██╔██╗ ██║   ██║   |");
+            Console.WriteLine("\t  | ██║     ██║   ██║██║╚██╗██║   ██║   ██╔══╝  ╚════██║   ██║   ██╔══██║██║╚██╗██║   ██║   |");
+            Console.WriteLine("\t  | ╚██████╗╚██████╔╝██║ ╚████║   ██║   ███████╗███████║   ██║   ██║  ██║██║ ╚████║   ██║   |");
+            Console.WriteLine("\t  |  ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝   ╚═╝   |");
+            Console.WriteLine("\t  \\_________________________________________________________________________________________/");
+            Console.WriteLine(" ");
+            Console.WriteLine("");
+            Console.ResetColor();
+            Console.WriteLine("\n\t Choosing..");
+            Thread.Sleep(700);
+            Console.Clear();
+
+            Console.ForegroundColor = ConsoleColor.DarkRed;                            //Change Title Color to Yellow  
+            Console.WriteLine("\t   _________________________________________________________________________________________ ");
+            Console.WriteLine("\t  /                                                                                         \\");
+            Console.WriteLine("\t  |  ██████╗ ██████╗ ███╗   ██╗████████╗███████╗███████╗████████╗ █████╗ ███╗   ██╗████████╗|");
+            Console.WriteLine("\t  | ██╔════╝██╔═══██╗████╗  ██║╚══██╔══╝██╔════╝██╔════╝╚══██╔══╝██╔══██╗████╗  ██║╚══██╔══╝|");
+            Console.WriteLine("\t  | ██║     ██║   ██║██╔██╗ ██║   ██║   █████╗  ███████╗   ██║   ███████║██╔██╗ ██║   ██║   |");
+            Console.WriteLine("\t  | ██║     ██║   ██║██║╚██╗██║   ██║   ██╔══╝  ╚════██║   ██║   ██╔══██║██║╚██╗██║   ██║   |");
+            Console.WriteLine("\t  | ╚██████╗╚██████╔╝██║ ╚████║   ██║   ███████╗███████║   ██║   ██║  ██║██║ ╚████║   ██║   |");
+            Console.WriteLine("\t  |  ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝   ╚═╝   |");
+            Console.WriteLine("\t  \\_________________________________________________________________________________________/");
+            Console.WriteLine(" ");
+            Console.WriteLine("");
+            Console.ResetColor();
+            Console.WriteLine("\n\t Choosing...");
+            Thread.Sleep(700);
+            Console.Clear();
+
+            Console.ForegroundColor = ConsoleColor.DarkRed;                            //Change Title Color to Yellow  
+            Console.WriteLine("\t   _________________________________________________________________________________________ ");
+            Console.WriteLine("\t  /                                                                                         \\");
+            Console.WriteLine("\t  |  ██████╗ ██████╗ ███╗   ██╗████████╗███████╗███████╗████████╗ █████╗ ███╗   ██╗████████╗|");
+            Console.WriteLine("\t  | ██╔════╝██╔═══██╗████╗  ██║╚══██╔══╝██╔════╝██╔════╝╚══██╔══╝██╔══██╗████╗  ██║╚══██╔══╝|");
+            Console.WriteLine("\t  | ██║     ██║   ██║██╔██╗ ██║   ██║   █████╗  ███████╗   ██║   ███████║██╔██╗ ██║   ██║   |");
+            Console.WriteLine("\t  | ██║     ██║   ██║██║╚██╗██║   ██║   ██╔══╝  ╚════██║   ██║   ██╔══██║██║╚██╗██║   ██║   |");
+            Console.WriteLine("\t  | ╚██████╗╚██████╔╝██║ ╚████║   ██║   ███████╗███████║   ██║   ██║  ██║██║ ╚████║   ██║   |");
+            Console.WriteLine("\t  |  ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝   ╚═╝   |");
+            Console.WriteLine("\t  \\_________________________________________________________________________________________/");
+            Console.WriteLine(" ");
+            Console.WriteLine("");
+            Console.ResetColor();
+            Console.WriteLine("\n\t Choosing....");
+            Thread.Sleep(700);
+            Console.Clear();
+
+
+
+            Console.ForegroundColor = ConsoleColor.DarkRed;                            //Change Title Color to Yellow  
+            Console.WriteLine("\t   _________________________________________________________________________________________ ");
+            Console.WriteLine("\t  /                                                                                         \\");
+            Console.WriteLine("\t  |  ██████╗ ██████╗ ███╗   ██╗████████╗███████╗███████╗████████╗ █████╗ ███╗   ██╗████████╗|");
+            Console.WriteLine("\t  | ██╔════╝██╔═══██╗████╗  ██║╚══██╔══╝██╔════╝██╔════╝╚══██╔══╝██╔══██╗████╗  ██║╚══██╔══╝|");
+            Console.WriteLine("\t  | ██║     ██║   ██║██╔██╗ ██║   ██║   █████╗  ███████╗   ██║   ███████║██╔██╗ ██║   ██║   |");
+            Console.WriteLine("\t  | ██║     ██║   ██║██║╚██╗██║   ██║   ██╔══╝  ╚════██║   ██║   ██╔══██║██║╚██╗██║   ██║   |");
+            Console.WriteLine("\t  | ╚██████╗╚██████╔╝██║ ╚████║   ██║   ███████╗███████║   ██║   ██║  ██║██║ ╚████║   ██║   |");
+            Console.WriteLine("\t  |  ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝   ╚═╝   |");
+            Console.WriteLine("\t  \\_________________________________________________________________________________________/");
+            Console.WriteLine(" ");
+            Console.WriteLine("");
+            Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("\n\n\t THE CHOSEN CONTESTANT IS:");
+            Console.ResetColor();
+            Console.WriteLine("\n\n\n\t {0}\t{1}\t{2}!", position[contestant].last, position[contestant].first, position[contestant].hobby);
+            Console.WriteLine("\n\n\n\t Press Enter to return to the main menu");
+            Console.ReadLine();
 
         }
 
@@ -385,16 +627,31 @@ namespace DealorNoDeal
 
             do                                                              //Do / While to assign the players case, checking that its within the allowed parameters.
             {
-                Console.WriteLine("Please Choose a case between 1 and 26:");
+
+                Console.ForegroundColor = ConsoleColor.DarkYellow;                            //Change Title Color to Yellow  
+                Console.WriteLine("\t   __________________________________________________________________________________________________________________________________");
+                Console.WriteLine("\t  /                                                                                                                                 \\");
+                Console.WriteLine("\t  |  ██████╗██╗  ██╗ ██████╗  ██████╗ ███████╗███████╗    ██╗   ██╗ ██████╗ ██╗   ██╗██████╗      ██████╗ █████╗ ███████╗███████╗██╗|");
+                Console.WriteLine("\t  | ██╔════╝██║  ██║██╔═══██╗██╔═══██╗██╔════╝██╔════╝    ╚██╗ ██╔╝██╔═══██╗██║   ██║██╔══██╗    ██╔════╝██╔══██╗██╔════╝██╔════╝██||");
+                Console.WriteLine("\t  | ██║     ███████║██║   ██║██║   ██║███████╗█████╗       ╚████╔╝ ██║   ██║██║   ██║██████╔╝    ██║     ███████║███████╗█████╗  ██||");
+                Console.WriteLine("\t  | ██║     ██╔══██║██║   ██║██║   ██║╚════██║██╔══╝        ╚██╔╝  ██║   ██║██║   ██║██╔══██╗    ██║     ██╔══██║╚════██║██╔══╝  ╚═╝|");
+                Console.WriteLine("\t  | ╚██████╗██║  ██║╚██████╔╝╚██████╔╝███████║███████╗       ██║   ╚██████╔╝╚██████╔╝██║  ██║    ╚██████╗██║  ██║███████║███████╗██||");
+                Console.WriteLine("\t  |  ╚═════╝╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚══════╝╚══════╝       ╚═╝    ╚═════╝  ╚═════╝ ╚═╝  ╚═╝     ╚═════╝╚═╝  ╚═╝╚══════╝╚══════╝╚═╝|");
+                Console.WriteLine("\t  \\_________________________________________________________________________________________________________________________________/");
+                Console.WriteLine(" ");
+                Console.WriteLine("");
+                Console.ResetColor();
+
+                Console.WriteLine("\t Please Choose a case between 1 and 26:");
                 tmp = Console.ReadLine();
                 casetmp = Convert.ToInt32(tmp);
 
                 if (casetmp < 1 || casetmp >26)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("\nError please enter a number between 1 and 26!\n");
+                    Console.WriteLine("\n\t Error please enter a number between 1 and 26!\n");
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("\nPress Enter to Continue");
+                    Console.WriteLine("\n\t Press Enter to Continue");
 
                     Console.ReadLine();
 
